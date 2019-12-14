@@ -47,6 +47,8 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener{
 
         btnGetAllData = findViewById(R.id.btnGetAllData);
 
+
+        //Now were are getting a single data using the object id that we know
         txtGetData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,6 +66,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener{
             }
         });
 
+        //Now we are getting all the data(objects) that we have in the parse server (class ie KickBoxer)
         btnGetAllData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

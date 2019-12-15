@@ -29,6 +29,8 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener{
 
     private String allKickBoxers;
 
+    private Button btnTransition;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +48,8 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener{
         txtGetData = findViewById(R.id.txtGetData);
 
         btnGetAllData = findViewById(R.id.btnGetAllData);
+
+        btnTransition = findViewById(R.id.btnNextActivity);
 
 
         //Now were are getting a single data using the object id that we know
@@ -73,6 +77,11 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener{
 
                 allKickBoxers = "";
                 ParseQuery<ParseObject> queryAll = ParseQuery.getQuery("KickBoxer");
+
+                //this is to query through all the data in the object in the server
+                queryAll.whereGreaterThan("punchPower", 1000);
+                //queryAll.setLimit(1);
+
                 queryAll.findInBackground(new FindCallback<ParseObject>() {
                     @Override
                     public void done(List<ParseObject> objects, ParseException e) {
@@ -102,8 +111,16 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener{
             }
         });
 
+        btnTransition.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
     }
 
+    //We are about to save data(objects) on the server
     @Override
     public void onClick(View v) {
 
